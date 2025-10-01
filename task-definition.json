@@ -1,0 +1,29 @@
+{
+  "family": "caseharvester-spider-worker",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::767398110838:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::767398110838:role/caseharvester-lambda-parser-role",
+  "containerDefinitions": [{
+    "name": "worker",
+    "image": "767398110838.dkr.ecr.us-east-1.amazonaws.com/caseharvester-worker:latest",
+    "environment": [
+      {"name": "MJCS_DATABASE_URL", "value": "postgresql://caseharvester_admin:MD_Court_Secure_2025!@mjcs-dev.c6r2wkokq7rk.us-east-1.rds.amazonaws.com/postgres"},
+      {"name": "CASE_DETAILS_BUCKET", "value": "md-caseharvester-html-dev"},
+      {"name": "SPIDER_QUEUE_NAME", "value": "caseharvester-spider-queue"},
+      {"name": "SCRAPER_QUEUE_NAME", "value": "caseharvester-scraper-queue"},
+      {"name": "PARSER_QUEUE_NAME", "value": "caseharvester-parser-queue"},
+      {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"}
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/caseharvester-worker",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "worker"
+      }
+    }
+  }]
+}
