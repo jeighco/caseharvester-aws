@@ -15,7 +15,8 @@
       {"name": "SPIDER_QUEUE_NAME", "value": "caseharvester-spider-queue"},
       {"name": "SCRAPER_QUEUE_NAME", "value": "caseharvester-scraper-queue"},
       {"name": "PARSER_QUEUE_NAME", "value": "caseharvester-parser-queue"},
-      {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"}
+      {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"},
+      {"name": "SCRAPINGBEE_API_KEY", "value": "TWH9SYEVUPGFPOLSW8RNIBS2YRMES68G7GIU4J6B0572J95J73Q0UD0PABHHVNEU5QRNZXB3K487ZCHB"}
     ],
     "logConfiguration": {
       "logDriver": "awslogs",
